@@ -3,16 +3,18 @@
   margin: 0;
 }
 
-main {
+body {
   height: 100vh;
-  background-color: #0B2434;
+  background-color: #0b2434;
   display: grid;
   place-items: center;
 }
 
-.card {
+main {
   background-color: white;
-  height: 500px;
-  width: 500px;
+  width: 75vw;
+  height: 75vh;
+  max-width: 800px;
+  max-height: 500px;
   border-radius: 1rem;
 }
