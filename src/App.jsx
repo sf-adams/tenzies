@@ -1,17 +1,26 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 import Die from "./Die";
 
 function App() {
-  const values = ["3", "5", "2", "1", "1", "4", "3", "6", "3", "1"];
+  const [dice, setDice] = useState(allNewDice());
+
+  const allNewDice = () => {
+    let valuesArray = [];
+    for (let i = 0; i < 10; i++) {
+      valuesArray.push(Math.ceil(Math.random() * 6).toString());
+    }
+    return valuesArray;
+  };
+
   return (
     <main>
       <div className="dice">
-        {values.map((value) => {
-          return (
-            <Die value={value} />
-          )
+        {dice.map((diceValue, index) => {
+          return <Die key={index} value={diceValue} />;
         })}
       </div>
+      <button onClick={allNewDice}>Values</button>
     </main>
   );
 }
