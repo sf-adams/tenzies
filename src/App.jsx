@@ -3,7 +3,9 @@ import "./App.css";
 function App() {
   return (
     <main>
-      <section className="card"></section>
+      <section className="card">
+        
+      </section>
     </main>
   );
 }

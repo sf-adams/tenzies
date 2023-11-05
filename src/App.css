@@ -1,3 +1,18 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
 main {
+  height: 100vh;
   background-color: #0B2434;
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  background-color: white;
+  height: 500px;
+  width: 500px;
+  border-radius: 1rem;
 }
