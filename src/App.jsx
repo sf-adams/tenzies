@@ -5,9 +5,11 @@ import Die from "./Die";
 function App() {
   const [dice, setDice] = useState([]);
 
-  const allNewDice = () => {
+  // Initialise the dice array
+  const initialiseDice = () => {
     let valuesArray = [];
-    for (let i = 0; i < 10; i++) {
+    const numDice = 10
+    for (let i = 0; i < numDice; i++) {
       valuesArray.push({
         id: i + 1,
         value: Math.ceil(Math.random() * 6).toString(),
@@ -17,10 +19,27 @@ function App() {
     setDice(valuesArray);
   };
 
+  // Create the dice array on load
   useEffect(() => {
-    allNewDice();
+    initialiseDice();
   }, []);
 
+  // Roll the dice
+  const rollDice = () => {
+    setDice((prevDice) => {
+      return prevDice.map((prevDie) => {
+        if (!prevDie.isSelected) {
+          return {
+            ...prevDie,
+            value: Math.ceil(Math.random() * 6).toString(),
+          };
+        }
+        return prevDie;
+      });
+    });
+  };
+
+  // Select die
   const selectDie = (id) => {
     setDice((prevDice) =>
       prevDice.map((die) => {
@@ -32,8 +51,6 @@ function App() {
     );
   };
 
-  console.log(dice);
-
   return (
     <main>
       <div className="dice">
@@ -41,9 +58,15 @@ function App() {
           return <Die key={die.id} die={die} selectDie={selectDie} />;
         })}
       </div>
-      <button className="roll" onClick={allNewDice}>
-        Roll
-      </button>
+      {dice.some((die) => die.isSelected === false) ? (
+        <button className="roll" onClick={rollDice}>
+          Roll
+        </button>
+      ) : (
+        <button className="roll" onClick={initialiseDice}>
+          Start Again
+        </button>
+      )}
     </main>
   );
 }
