@@ -54,6 +54,10 @@ main {
   cursor: pointer;
 }
 
+.die--selected {
+  background-color: #59E391;
+}
+
 .die__num {
   font-size: 2rem;
 }
