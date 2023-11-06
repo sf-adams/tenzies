@@ -3,15 +3,19 @@ import "./App.css";
 import Die from "./Die";
 
 function App() {
-  const [dice, setDice] = useState(allNewDice());
+  const [dice, setDice] = useState([]);
 
   const allNewDice = () => {
     let valuesArray = [];
     for (let i = 0; i < 10; i++) {
       valuesArray.push(Math.ceil(Math.random() * 6).toString());
     }
-    return valuesArray;
+    setDice(valuesArray);
   };
+
+  useEffect(() => {
+    allNewDice();
+  }, []);
 
   return (
     <main>
@@ -20,7 +24,7 @@ function App() {
           return <Die key={index} value={diceValue} />;
         })}
       </div>
-      <button onClick={allNewDice}>Values</button>
+      <button className="roll" onClick={allNewDice}>Roll</button>
     </main>
   );
 }
