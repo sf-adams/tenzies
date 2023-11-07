@@ -17,12 +17,25 @@ main {
   height: 75vh;
   max-width: 500px;
   max-height: 500px;
+  padding: 3rem 2rem;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  gap: 2rem;
+}
+
+.title {
+  font-size: 40px;
+  color: #2b283a;
+}
+
+.instructions {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  color: #4a4e74;
+  margin-bottom: 1.5rem;
 }
 
 .dice {
@@ -55,7 +68,7 @@ main {
 }
 
 .die--selected {
-  background-color: #59E391;
+  background-color: #59e391;
 }
 
 .die__num {

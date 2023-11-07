@@ -44,19 +44,23 @@ function App() {
   const selectDie = (id) => {
     setDice((prevDice) =>
       prevDice.map((die) => {
-        return {
-          ...die,
-          isSelected: id === die.id ? !die.isSelected : die.isSelected,
-        };
+        return die.id === id ? { ...die, isSelected: !die.isSelected } : die;
       })
     );
   };
 
   return (
     <main>
+      <h1 className="title">Tenzies</h1>
+      <p className="instructions">
+        Roll until all dice are the same. Click each die to freeze it at its
+        current value between rolls.
+      </p>
       <div className="dice">
         {dice.map((die) => {
-          return <Die key={die.id} die={die} selectDie={selectDie} />;
+          return (
+            <Die key={die.id} die={die} selectDie={() => selectDie(die.id)} />
+          );
         })}
       </div>
       {dice.some((die) => die.isSelected === false) ? (
