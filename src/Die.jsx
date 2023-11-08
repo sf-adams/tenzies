@@ -5,7 +5,7 @@ export default function Die({ die, selectDie }) {
       className={`die ${die.isSelected ? "die--selected" : ""}`}
       onClick={selectDie}
     >
-      <p className="die__num">{die.value}</p>
+      <div className={`number number${die.value}`}></div>
     </article>
   );
 }

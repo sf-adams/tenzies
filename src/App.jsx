@@ -29,15 +29,15 @@ function App() {
   // Initialise the dice array when the component loads
   useEffect(() => {
     initialiseDice();
-  }, []);
+  }, []); 
 
   // Check to see if the user has won when dice array updated
   useEffect(() => {
     const allNumbers = dice.every((die) => die.value === dice[0].value);
-    const allSelected = dice.every((die) => die.isSelected === true);
+    const allSelected = dice.every((die) => die.isSelected);
 
-    if (allNumbers && allSelected) {
-      setTenzies((prevTenzies) => !prevTenzies);
+    if (dice.length > 1 && allNumbers && allSelected) {
+      setTenzies(true);
     }
   }, [dice]);
 
