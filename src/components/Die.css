@@ -1,0 +1,53 @@
+.die {
+  width: 60px;
+  height: 60px;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.15);
+  cursor: pointer;
+  position: relative;
+}
+
+.die--selected {
+  background-color: #59e391;
+}
+
+.die__num {
+  font-size: 2rem;
+}
+
+.number {
+  width: 14px;
+  height: 14px;
+  background-color: #0b2434;
+  border-radius: 100%;
+  position: absolute;
+  left: 6px;
+  top: 6px;
+}
+
+.number1 {
+  top: 29px;
+  left: 29px;
+  transform: translate(-50%, -50%);
+}
+
+.number2 {
+  box-shadow: 34px 34px #0b2434;
+}
+
+.number3 {
+  box-shadow: 17px 17px #0b2434, 34px 34px #0b2434;
+}
+
+.number4 {
+  box-shadow: 34px 0 #0b2434, 34px 34px #0b2434, 0 34px #0b2434;
+}
+
+.number5 {
+  box-shadow: 34px 0 #0b2434, 34px 34px #0b2434, 0 34px #0b2434, 17px 17px #0b2434;
+}
+
+.number6 {
+  box-shadow: 34px 0 #0b2434, 0 17px #0b2434, 34px 17px #0b2434, 34px 34px #0b2434, 0 34px #0b2434;
+}

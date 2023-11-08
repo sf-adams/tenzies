@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import Die from "./Die";
+import DieIcon from "./assets/die.svg";
 import Confetti from "react-confetti";
+import Die from "./components/Die";
+import Timer from "./components/Timer";
 
 function App() {
   const [dice, setDice] = useState([]);
   const [tenzies, setTenzies] = useState(false);
+  const [rollCount, setRollCount] = useState(0);
+  const [time, setTime] = useState(60);
 
   // Function to initialise the dice array with 10 dice
   const initialiseDice = () => {
@@ -24,12 +28,14 @@ function App() {
   const resetGame = () => {
     initialiseDice();
     setTenzies(false);
-  }
+    setRollCount(0);
+    setTime(60);
+  };
 
   // Initialise the dice array when the component loads
   useEffect(() => {
     initialiseDice();
-  }, []); 
+  }, []);
 
   // Check to see if the user has won when dice array updated
   useEffect(() => {
@@ -38,6 +44,7 @@ function App() {
 
     if (dice.length > 1 && allNumbers && allSelected) {
       setTenzies(true);
+      highScore();
     }
   }, [dice]);
 
@@ -54,6 +61,7 @@ function App() {
         return !prevDie.isSelected ? rollDie(prevDie) : prevDie;
       });
     });
+    setRollCount((prevCount) => prevCount + 1);
   };
 
   // Function to select or deselect a die by its ID
@@ -65,13 +73,38 @@ function App() {
     );
   };
 
+  // Function to get or set high score
+  const highScore = () => {
+    const currentScore = 60 - time;
+    const currentBest = sessionStorage.getItem("time");
+
+    if (currentBest === null || currentScore < currentBest) {
+      sessionStorage.setItem("time", currentScore);
+      console.log(
+        `You took ${currentScore} seconds! \nYour new best time is ${currentScore} seconds!`
+      );
+    } else {
+      console.log(
+        `You took ${currentScore} seconds! \nYour best time remains ${currentBest} seconds!`
+      );
+    }
+  };
+
   return (
     <main>
+      <header>
+        <div className="roll-count">
+          <img src={DieIcon} alt="" />
+          <div>{rollCount}</div>
+        </div>
+        <Timer time={time} setTime={setTime} tenzies={tenzies} />
+      </header>
       <h1 className="title">Tenzies</h1>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
       </p>
+
       <div className="dice">
         {dice.map((die) => {
           return (

@@ -1,3 +1,5 @@
+import "./Die.css";
+
 export default function Die({ die, selectDie }) {
   // Render a single die with its value and selection state
   return (

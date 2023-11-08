@@ -21,8 +21,15 @@ main {
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: -1rem;
 }
 
 .title {
@@ -35,13 +42,18 @@ main {
   font-weight: 400;
   text-align: center;
   color: #4a4e74;
-  margin-bottom: 1.5rem;
+}
+
+.roll-count {
+  display: flex;
+  gap: 0.5rem;
 }
 
 .dice {
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
   gap: 2rem;
+  margin: 1rem;
 }
 
 .roll {
@@ -53,59 +65,4 @@ main {
   border-radius: 0.25rem;
   cursor: pointer;
   box-shadow: 0 3px 7px hsla(0, 0%, 0%, 0.2);
-}
-
-/* DIE COMPONENT */
-.die {
-  width: 60px;
-  height: 60px;
-  background-color: #ffffff;
-  border-radius: 0.5rem;
-  box-shadow: 0px 2px 2px hsla(0, 0%, 0%, 0.15);
-  cursor: pointer;
-  position: relative;
-}
-
-.die--selected {
-  background-color: #59e391;
-}
-
-.die__num {
-  font-size: 2rem;
-}
-
-.number {
-  width: 14px;
-  height: 14px;
-  background-color: #0b2434;
-  border-radius: 100%;
-  position: absolute;
-  left: 6px;
-  top: 6px;
-}
-
-.number1 {
-  top: 29px;
-  left: 29px;
-  transform: translate(-50%, -50%);
-}
-
-.number2 {
-  box-shadow: 34px 34px #0b2434;
-}
-
-.number3 {
-  box-shadow: 17px 17px #0b2434, 34px 34px #0b2434;
-}
-
-.number4 {
-  box-shadow: 34px 0 #0b2434, 34px 34px #0b2434, 0 34px #0b2434;
-}
-
-.number5 {
-  box-shadow: 34px 0 #0b2434, 34px 34px #0b2434, 0 34px #0b2434, 17px 17px #0b2434;
-}
-
-.number6 {
-  box-shadow: 34px 0 #0b2434, 0 17px #0b2434, 34px 17px #0b2434, 34px 34px #0b2434, 0 34px #0b2434;
 }
